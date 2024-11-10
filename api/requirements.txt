@@ -1,0 +1,11 @@
+# TA-Lib
+# technical
+setuptools
+pandas_ta
+alpaca-py
+numpy==1.26.4
+flask
+scikit-learn
+SQLAlchemy
+psycopg2-binary
+pyarrow

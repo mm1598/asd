@@ -1,0 +1,25 @@
+services:
+  api:
+    build: .
+    ports:
+      - "0.0.0.0:8881:5000"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=db
+
+#   timescaledb:
+#     image: timescale/timescaledb:latest-pg14
+#     container_name: timescaledb
+#     environment:
+#       - POSTGRES_USER=user
+#       - POSTGRES_PASSWORD=pass
+#       - POSTGRES_DB=db
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - timescaledb_data:/var/lib/postgresql/data
+#     restart: always
+#
+# volumes:
+#   timescaledb_data:

@@ -1,0 +1,7 @@
+{
+  "ALPACA_KEY": "PKJQ8MQUV9BLAUPQ4MHA",
+  "ALPACA_SECRET": "y88ZTGmx49m2HQ3Q4c4OA4aURbeHLJLBbEpKila8",
+  "paper": true,
+  "ntfy_url": "https://ntfy.lookaway.dev/options_bot",
+  "sleep_time": 1200
+}
