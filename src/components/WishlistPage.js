@@ -1,6 +1,5 @@
-// src/components/WishlistPage.js
 import React from 'react';
-import StockChart from './StockChart'; // Import your StockChart component
+import StockChart from './StockChart'; 
 const WishlistPage = ({ stocks }) => {
     return (
         <div>

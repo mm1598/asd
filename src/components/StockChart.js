@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Chart, registerables } from 'chart.js';
 
-// Register all necessary components, including scales
 Chart.register(...registerables);
 
 const StockChart = ({ data }) => {
@@ -9,20 +8,18 @@ const StockChart = ({ data }) => {
     const chartInstanceRef = useRef(null);
 
     useEffect(() => {
-        // Destroy the previous chart instance if it exists
         if (chartInstanceRef.current) {
             chartInstanceRef.current.destroy();
         }
 
-        // Create a new chart instance
         chartInstanceRef.current = new Chart(chartRef.current, {
-            type: 'line', // Change to the desired chart type
+            type: 'line', 
             data: {
-                labels: data.map(point => point.date), // Use 'date' for labels
+                labels: data.map(point => point.date), 
                 datasets: [
                     {
                         label: 'Stock Price',
-                        data: data.map(point => point.close), // Use 'close' for stock prices
+                        data: data.map(point => point.close), 
                         pointRadius: 0,
                         fill: false,
                         backgroundColor: 'rgba(75,192,192,0.4)',
@@ -33,7 +30,7 @@ const StockChart = ({ data }) => {
             options: {
                 scales: {
                     x: {
-                        type: 'category', // Ensure this scale type is registered
+                        type: 'category', 
                         title: {
                             display: true,
                             text: 'Date',
@@ -50,13 +47,13 @@ const StockChart = ({ data }) => {
             },
         });
 
-        // Cleanup function to destroy the chart on unmount
+        
         return () => {
             if (chartInstanceRef.current) {
                 chartInstanceRef.current.destroy();
             }
         };
-    }, [data]); // Re-run effect when data changes
+    }, [data]); 
 
     return <canvas ref={chartRef} />;
 };

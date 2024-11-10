@@ -6,7 +6,7 @@ const PredictionCard = ({ prediction, ticker }) => {
       <h2>Prediction for {ticker}</h2>
       <p>Predicted Change: {prediction.change}%</p>
       <p>Confidence Level: {prediction.confidence}%</p>
-      {/* Add animations for this card */}
+      {/* Add animations for card */}
     </div>
   );
 };

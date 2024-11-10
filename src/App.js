@@ -41,11 +41,10 @@ const App = () => {
             setAccuracyScore(accuracy.toFixed(2));
             setPredictedPrice(predictedPriceValue.toFixed(2));
 
-            // Set sentiment based on predictedPriceValue
             if (predictedPriceValue === 1) {
-                setPriceSentiment({ message: 'Predicted: Bullish', sentimentColor: '#00ff00' }); // Brighter green for bullish
+                setPriceSentiment({ message: 'Predicted: Bullish', sentimentColor: '#00ff00' }); 
             } else if (predictedPriceValue === -1) {
-                setPriceSentiment({ message: 'Predicted: Bearish', sentimentColor: '#ff0000' }); // Brighter red for bearish
+                setPriceSentiment({ message: 'Predicted: Bearish', sentimentColor: '#ff0000' }); 
             } else {
                 setPriceSentiment({ message: 'Predicted: Neutral', sentimentColor: 'grey' });
             }
@@ -76,7 +75,7 @@ const App = () => {
                         <div className="input-section">
                             <StockInput onAddStock={handleAddStock} />
                             <button onClick={() => setShowWishlist(!showWishlist)}>
-                                {showWishlist ? 'Hide Wishlist' : 'Show Wishlist'}
+                                {showWishlist ? 'Hide Favorites' : 'Show Favorites'}
                             </button>
                         </div>
                         {showWishlist && (
@@ -94,12 +93,14 @@ const App = () => {
                                         <h3>Model Accuracy: {accuracyScore}%</h3>
                                     )}
                                     {predictedPrice !== null && (
-                                        <h3 style={{ color: '#4bc0c0' }}>
-                                            {priceSentiment.message.split(': ')[0]}: 
-                                            <span style={{ color: priceSentiment.sentimentColor }}>
-                                                {priceSentiment.message.split(': ')[1]}
-                                            </span>
-                                        </h3>
+                                        <div className="centered-sentiment">
+                                            <h3>
+                                                <span style={{ color: '#4bc0c0' }}>Predicted: </span>
+                                                <span style={{ color: priceSentiment.sentimentColor }}>
+                                                    {priceSentiment.message.split(': ')[1]}
+                                                </span>
+                                            </h3>
+                                        </div>
                                     )}
                                 </div>
                             </>

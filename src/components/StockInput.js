@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import '../stockinput.css'; // Make sure this path is correct and matches your project structure
+import '../stockinput.css'; 
 
 const StockInput = ({ onAddStock }) => {
   const [stockName, setStockName] = useState('');
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     if (stockName) {
-      setError(null); // Reset error
-      await onAddStock(stockName.toUpperCase(), false); // Call the function to show the graph without adding to wishlist
-      setStockName(''); // Clear input field
+      setError(null); 
+      await onAddStock(stockName.toUpperCase(), false); 
+      setStockName(''); 
     } else {
       setError('Please enter a stock name.');
     }
@@ -18,8 +18,8 @@ const StockInput = ({ onAddStock }) => {
 
   const handleAddToWishlist = async () => {
     if (stockName) {
-      await onAddStock(stockName.toUpperCase(), true); // Call the function to add to wishlist
-      setStockName(''); // Clear input field
+      await onAddStock(stockName.toUpperCase(), true); 
+      setStockName(''); 
     } else {
       setError('Please enter a stock name.');
     }
@@ -33,10 +33,10 @@ const StockInput = ({ onAddStock }) => {
             type="text"
             autoComplete="off"
             name="text"
-            className="input" // Updated class name for the input style
+            className="input"
             value={stockName}
             onChange={(e) => setStockName(e.target.value)}
-            placeholder="Enter stock name" // Updated placeholder
+            placeholder="Enter stock name" 
             required
           />
           <button type="button" className="button" onClick={handleAddToWishlist}>
