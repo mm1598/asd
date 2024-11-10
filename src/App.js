@@ -12,8 +12,8 @@ const App = () => {
     const [predictedPrice, setPredictedPrice] = useState(null); // State for predicted price
 
     const handleAddStock = async (stockName) => {
-        // Fetch the new stock data
         try {
+            // Fetch the new stock data
             const response = await fetch(`https://hackfin-api.lookaway.dev/data/${stockName}`);
             if (!response.ok) {
                 throw new Error(`Failed to fetch data for ${stockName}`);
@@ -31,11 +31,21 @@ const App = () => {
             setChartData(formattedData);
             setStocks(prevStocks => [...prevStocks, { name: stockName, chartData: formattedData }]);
 
-            // Here you can implement your logic to calculate accuracy and predicted price
-            setAccuracyScore(Math.random() * 100); // Replace with actual logic
-            setPredictedPrice(Math.random() * 200); // Replace with actual logic
+            // Fetch prediction and accuracy data
+            const predictionResponse = await fetch(`https://hackfin-api.lookaway.dev/predict/${stockName}`);
+            if (!predictionResponse.ok) {
+                throw new Error(`Failed to fetch prediction data for ${stockName}`);
+            }
+            const predictionResult = await predictionResponse.json();
+
+            // Update accuracy and predicted price
+            const accuracy = predictionResult.accuracy * 100; // Convert to percentage
+            const predictedPrice = predictionResult.prediction[0]; // Use the first value in the prediction array
+
+            setAccuracyScore(accuracy.toFixed(2)); // Round to the nearest hundredth
+            setPredictedPrice(predictedPrice.toFixed(2)); // Format as dollars and cents
         } catch (error) {
-            console.error("Error fetching stock data:", error);
+            console.error("Error fetching stock data or prediction:", error);
         }
     };
 
@@ -47,10 +57,10 @@ const App = () => {
                         <h1>Stock Performance Predictor</h1>
                         <StockInput onAddStock={handleAddStock} />
                         {accuracyScore !== null && (
-                            <h3>Model Accuracy: {accuracyScore.toFixed(2)}%</h3>
+                            <h3>Model Accuracy: {accuracyScore}%</h3>
                         )}
                         {predictedPrice !== null && (
-                            <h3>Predicted Price in 30 Days: ${predictedPrice.toFixed(2)}</h3>
+                            <h3>Predicted Price in 30 Days: ${predictedPrice}</h3>
                         )}
                         <Link to="/wishlist">View Wishlist</Link>
                     </div>
