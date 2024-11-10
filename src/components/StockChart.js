@@ -1,4 +1,3 @@
-// src/components/StockChart.js
 import React, { useEffect, useRef } from 'react';
 import { Chart, registerables } from 'chart.js';
 
@@ -19,11 +18,12 @@ const StockChart = ({ data }) => {
         chartInstanceRef.current = new Chart(chartRef.current, {
             type: 'line', // Change to the desired chart type
             data: {
-                labels: data.map(point => point.date), // Assuming data has a date property
+                labels: data.map(point => point.date), // Use 'date' for labels
                 datasets: [
                     {
                         label: 'Stock Price',
-                        data: data.map(point => point.price), // Assuming data has a price property
+                        data: data.map(point => point.close), // Use 'close' for stock prices
+                        pointRadius: 0,
                         fill: false,
                         backgroundColor: 'rgba(75,192,192,0.4)',
                         borderColor: 'rgba(75,192,192,1)',
@@ -34,9 +34,17 @@ const StockChart = ({ data }) => {
                 scales: {
                     x: {
                         type: 'category', // Ensure this scale type is registered
+                        title: {
+                            display: true,
+                            text: 'Date',
+                        },
                     },
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Price',
+                        },
                     },
                 },
             },
