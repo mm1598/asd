@@ -1,6 +1,8 @@
 /* App.css */
 
 /* Container for the app */
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+
 .container {
   /* Basic dimensions and centering */
   width: 100%;
@@ -40,7 +42,7 @@
 .content {
   display: flex;
   justify-content: space-between;
-  width: 80%; /* Set a width for the content area */
+  width: 90%; /* Set a width for the content area */
   overflow: hidden; /* Prevent overflow */
 }
 
@@ -61,10 +63,27 @@
 }
 
 /* Header styles */
-h1, h2, h3 {
-  font-size: 24px; /* Increase the font size */
+h1 {
+  font-size: 45px; /* Updated to 35px */
+  margin-bottom: 10px;
+  margin-top: -10px;
+  font-family:Doto;
   color: #ffffff; /* Ensure the text color is visible */
 }
+
+h2 {
+  font-family:Doto;
+  font-size: 26px; /* Updated to 26px */
+  color: #ffffff; /* Ensure the text color is visible */
+}
+
+h3 {
+  font-size: 18px; /* Updated to 22px */
+  font-family:Doto;
+  margin-top: -10px;
+  color: #ffffff; /* Ensure the text color is visible */
+}
+
 
 .wishlist-page h1 {
   font-size: 28px; /* Larger title for wishlist */

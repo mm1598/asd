@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+.input {
+    width: 200px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 1em;
+    background-color: #f9f9f9;
+    box-shadow: inset 0px 0px 0px rgba(0,0,0,0.3);
+    transition: 300ms ease-in-out;
+  }
+  
+  .input:focus {
+    background-color: rgb(240, 240, 240);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 0px #969696,
+               0px 0px 0px #e8e8e8;
+  }
+  
+  button {
+    display: inline-block;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    border-radius: 4px;
+    background-color: #4bc0c0;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    width: 95px;
+    height: 40px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 6px;
+   }
+   
+   button:hover span:after {
+    opacity: 1;
+    right: 0;
+   }
