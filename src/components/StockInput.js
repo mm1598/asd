@@ -6,10 +6,19 @@ const StockInput = ({ onAddStock }) => {
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     if (stockName) {
       setError(null); // Reset error
-      await onAddStock(stockName.toUpperCase()); // Call the function passed from App
+      await onAddStock(stockName.toUpperCase(), false); // Call the function to show the graph without adding to wishlist
+      setStockName(''); // Clear input field
+    } else {
+      setError('Please enter a stock name.');
+    }
+  };
+
+  const handleAddToWishlist = async () => {
+    if (stockName) {
+      await onAddStock(stockName.toUpperCase(), true); // Call the function to add to wishlist
       setStockName(''); // Clear input field
     } else {
       setError('Please enter a stock name.');
@@ -20,7 +29,6 @@ const StockInput = ({ onAddStock }) => {
     <div className="stock-input">
       <form onSubmit={handleSubmit} className="form__group field">
         <div className="form__container">
-          {/* Input element with updated class name */}
           <input
             type="text"
             autoComplete="off"
@@ -31,9 +39,8 @@ const StockInput = ({ onAddStock }) => {
             placeholder="Enter stock name" // Updated placeholder
             required
           />
-          {/* Button element with updated class name */}
-          <button type="submit" className="button">
-            <span>Add Stock</span> {/* Span inside the button for the animation */}
+          <button type="button" className="button" onClick={handleAddToWishlist}>
+            <span>Favorites</span> {/* Span inside the button for the animation */}
           </button>
         </div>
       </form>

@@ -51,15 +51,19 @@
   flex: 1;
   color: #ffffff; /* White text for contrast */
   padding: 20px;
+  display: flex; /* Ensure it's a flex container */
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align items to the left */
+  transition: transform 0.5 ease; /* Smooth transition for transform */
 }
 
-/* Chart section styling */
 .chart-section {
-  flex: 1;
+  flex: 1; /* Keep the chart section flexible */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center align the chart and predictions */
+  align-items: center; /* Center align the chart and predictions */
+  padding: 20px; /* Add some padding around the chart section */
 }
 
 /* Header styles */
@@ -120,4 +124,18 @@ h3 {
 /* Wishlist item styling */
 .wishlist-item {
   margin-bottom: 20px; /* Space between wishlist items */
+}
+.wishlist-page {
+  padding: 13.5px; /* Reduced from 15px to 13.5px */
+  color: #ffffff; /* White text for contrast */
+  background: #121212; /* Maintain the dark background */
+  overflow-y: auto; /* Allow scrolling */
+  max-height: 37.125vh; /* Reduced from 41.25vh to 37.125vh */
+  width: 74.25%; /* Reduced from 82.5% to 74.25% */
+  border-radius: 8px; /* Optional: add rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Optional: shadow for depth */
+  transform: scale(1); /* Reset scale */
+  transition: transform 0.5s ease, max-height 0.5s ease; /* Increase transition duration to 0.5s */
+  align-self: flex-start; /* Align to the start of the flex container */
+  margin-left: 0; /* Ensure no left margin for proper alignment */
 }
